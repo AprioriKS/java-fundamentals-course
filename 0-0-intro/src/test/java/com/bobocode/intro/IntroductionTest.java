@@ -1,5 +1,6 @@
 package com.bobocode.intro;
 
+import java.lang.reflect.InvocationTargetException;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.*;
 
@@ -51,7 +52,8 @@ class IntroductionTest {
     @Order(3)
     @DisplayName("encodeMessage returns correct encoded message")
     @SneakyThrows
-    void encodeMessageReturnsCorrectPhrase() {
+    void encodeMessageReturnsCorrectPhrase()
+        throws InvocationTargetException, IllegalAccessException {
         var encodeMessageMethod = Arrays.stream(Introduction.class.getDeclaredMethods())
                 .filter(method -> method.getName().equals("encodeMessage"))
                 .findAny()
